@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        table{
+            border-collapse: collapse;
+            
+        }
+        th{
+            background-color: rgb(71, 71, 201);
+            color: aliceblue;
+            padding: 5px;
+        }
+        td{
+            padding: 5px;
+        }
+        tr:nth-child(even){background-color: #859ef0}
+        tr:nth-child(odd){background-color: #ebe6f3}
+    </style>
+    <title>Tugas 1 PAM</title>
+</head>
+<body>
+    <table>
+        <tr id="kepala">
+            <th>No</th>
+            <th>Nama</th>
+            <th>NIM</th>
+            <th>Nilai</th>
+        </tr>
+
+        <tr class="barisData">
+            <td>1</td>
+            <td>Boy</td>
+            <td>1293121</td>
+            <td class="nilai">60</td>
+        </tr>
+
+        <tr class="barisData">
+            <td>1</td>
+            <td>ASD</td>
+            <td>ASDA</td>
+            <td class="nilai">80</td>
+        </tr>
+
+        <tr class="barisData">
+            <td>2</td>
+            <td>asdas</td>
+            <td>fww</td>
+            <td class="nilai">30</td>
+        </tr>
+
+        <tr class="barisData">
+            <td>4</td>
+            <td>ada</td>
+            <td>afa</td>
+            <td class="nilai">100</td>
+        </tr>
+        
+    </table>
+
+    <!-- javascript untuk membuat kolom Huruf mutu -->
+    <script>
+        let head = document.getElementById("kepala");
+        let dataNilai = document.getElementsByClassName("nilai");
+        let barisData = document.getElementsByClassName("barisData");
+        let hurufMutu;
+
+        // function untuk menampilkan huruf mutu
+        var kolomHuruf = ()=>{
+            let th = document.createElement('th');
+            let textNode = document.createTextNode('Huruf Mutu');
+            let td;
+            th.appendChild(textNode);
+            head.appendChild(th);
+
+            for(var i=0; i<dataNilai.length; i++){
+                td = document.createElement("td");
+                td.style.textAlign = "center";
+                
+                if(dataNilai[i].innerHTML>=80){
+                    hurufMutu = document.createTextNode("A");
+                }
+                else if(dataNilai[i].innerHTML>=70&&dataNilai[i].innerHTML<80){
+                    hurufMutu = document.createTextNode("AB");
+                }
+                else if(dataNilai[i].innerHTML>=60&&dataNilai[i].innerHTML<70){
+                    hurufMutu = document.createTextNode("B");
+                }
+                else if(dataNilai[i].innerHTML>=50&&dataNilai[i].innerHTML<60){
+                    hurufMutu = document.createTextNode("BC");
+                }
+                else if(dataNilai[i].innerHTML>=40&&dataNilai[i].innerHTML<50){
+                    hurufMutu = document.createTextNode("C");
+                }
+                else if(dataNilai[i].innerHTML>=10&&dataNilai[i].innerHTML<40){
+                    hurufMutu = document.createTextNode("D");
+                }
+                else{
+                    hurufMutu = document.createTextNode("E");
+                }
+                td.appendChild(hurufMutu);
+                barisData[i].appendChild(td);
+            }
+        }
+        document.innerHTML = kolomHuruf();
+        
+    </script>
+</body>
+</html>
